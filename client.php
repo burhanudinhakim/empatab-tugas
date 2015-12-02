@@ -5,8 +5,9 @@ ini_set('display_error',1);
 require_once('nusoap/lib/nusoap.php');
 $url = 'http://localhost/sit/8/server.php?wsdl';
 $client = new nusoap_client($url, 'WSDL');
-$nik =  isset($_GET["nik"]) ? $_GET["nik"] : '' ;
+$nip =  isset($_GET["nip"]) ? $_GET["nip"] : '' ;
 
-$result = $client->call('get_penduduk_by_nik', array('nik'=>$nik));
+$result = $client->call('get_pegawai', array('nip'=>$nip));
+var_dump($result);
 $data = json_decode($result);
 ?>

@@ -1,7 +1,7 @@
 <?php require_once 'client.php' ?>
 
 <center><h2>Penduduk</h2></center>
-<?php if($nik=='') { ?>
+<?php if(isset($nik)) { ?>
 <table border="1" align="center" cellpadding="4" cellspacing="0">
   <tr>
     <td>ID</td>
