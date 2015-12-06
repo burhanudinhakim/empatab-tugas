@@ -1,44 +1,32 @@
 <?php require_once 'client.php' ?>
-
-<center><h2>Penduduk</h2></center>
-<?php if(isset($nik)) { ?>
+  
+<center><h2>Daftar Penduduk</h2></center>
+<table align="center" cellpadding="4" cellspacing="0">
+  <tr>
+    <td colspan='3' align="left" style="float:left"><a href="register.php">Tambah Pegawai</a></td>
+  </tr>
+</table>
 <table border="1" align="center" cellpadding="4" cellspacing="0">
   <tr>
-    <td>ID</td>
-    <td>NIK</td>
+    <td>No</td>
+    <td>NIP</td>
     <td>Nama</td>
+    <td>Action</td>
   </tr>
-  <?php foreach ($data as $key => $value) { ?>
+  <?php $i=1; foreach ($data as $key => $value) { ?>
   <tr>
-    <td><?php echo $value->penduduk_id;?></td>
-    <td><a href="?nik=<?= $value->penduduk_nik ?>"><?php echo $value->penduduk_nik;?></a></td>
-    <td><?php echo $value->penduduk_nama;?></td>
+    <td><?php echo $i;?></td>
+    <td><?php echo $value->nip;?></a></td>
+    <td><?php echo $value->nama;?></td>
+    <td>
+      <a href="detail.php?nip=<?= $value->nip ?>">Detail</a>
+      &nbsp;
+      <a href="edit.php?nip=<?= $value->nip ?>">Edit</a>
+      &nbsp;
+      <a href="riwayat.php?nip=<?= $value->nip ?>">Riwayat Pekerjaan</a>
+      &nbsp;
+      <a href="delete.php?nip=<?= $value->nip ?>">Delete</a>
+    </td>
   </tr>
-  <?php } ?>
+  <?php $i++; } ?>
 </table>
-<?php }else{ ?>
-<table border="1" align="center" cellpadding="4" cellspacing="0">
-  <?php foreach ($data as $key => $value) { ?>
-    <tr>
-      <td>ID</td>
-      <td><?php echo $value->penduduk_id?></td>
-    </tr>
-    <tr>
-      <td>Nama</td>
-      <td><?php echo $value->penduduk_nama?></td>
-    </tr>
-    <tr>
-      <td>Tanggal Lahir</td>
-      <td><?php echo $value->penduduk_tanggal_lahir?></td>
-    </tr>
-    <tr>
-      <td>Tempat Lahir</td>
-      <td><?php echo $value->penduduk_tempat_lahir?></td>
-    </tr>
-    <tr>
-      <td>Agama</td>
-      <td><?php echo $value->penduduk_agama?></td>
-    </tr>
-  <?php } ?>
-</table>
-<?php }?>

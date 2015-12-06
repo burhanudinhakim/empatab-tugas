@@ -11,12 +11,12 @@ $server->wsdl->schemaTargetNamespace = 'urn:pegawai';
 
 $server->register('get_pegawai',
   array(
-    'nik' => 'xsd:string'),
+    'nip' => 'xsd:string'),
     array(
       'return' => 'xsd:string'
     ),
     'urn:pegawai',
-    'urn:pegawai#get_pegawai_by_nik',
+    'urn:pegawai#get_pegawai',
     'rpc',
     'encoded',
     'Service untuk mengetahui daftar pegawai. Dan untuk menampilkan pegawai secara sepesifik'
@@ -24,7 +24,7 @@ $server->register('get_pegawai',
 
 $server->register('get_riwayat_pekerjaan',
   array(
-    'nik' => 'xsd:string'),
+    'nip' => 'xsd:string'),
     array(
       'return' => 'xsd:string'
     ),
@@ -37,7 +37,7 @@ $server->register('get_riwayat_pekerjaan',
 
 function get_pegawai($nip="") {
   $pegawai = new Pegawai;
-  return $pegawai->get_pegawai_by_nik($nip);
+  return $pegawai->get_pegawai($nip);
 }
 
 function get_riwayat_pekerjaan($nip="") {
