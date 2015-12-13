@@ -1,4 +1,10 @@
 <?php
+<<<<<<< HEAD
+=======
+error_reporting(E_ALL);
+ini_set('display_error',1);
+
+>>>>>>> 73574e91897b7e2e7262c782fdfa8d2e0a68000c
 require_once 'nusoap/lib/nusoap.php';
 require_once 'adodb/adodb.inc.php';
 require_once 'pegawai.php';
@@ -32,6 +38,7 @@ $server->register('get_riwayat_pekerjaan',
     'Service untuk mengetahui riwayat pekerjaan dari pegawai'
   );
 
+<<<<<<< HEAD
 $server->register('get_riwayat_pekerjaan_by_nik',
   array(
     'nik' => 'xsd:string'),
@@ -45,6 +52,8 @@ $server->register('get_riwayat_pekerjaan_by_nik',
     'Service untuk mengetahui riwayat pekerjaan dari pegawai'
   );
 
+=======
+>>>>>>> 73574e91897b7e2e7262c782fdfa8d2e0a68000c
 function get_pegawai($nip="") {
   $pegawai = new Pegawai;
   return $pegawai->get_pegawai($nip);
@@ -55,10 +64,13 @@ function get_riwayat_pekerjaan($nip="") {
   return $pegawai->get_riwayat_pekerjaan($nip);
 }
 
+<<<<<<< HEAD
 function get_riwayat_pekerjaan_by_nik($nik) {
   $pegawai = new Pegawai;
   return $pegawai->get_riwayat_pekerjaan_by_nik($nik);
 }
 
+=======
+>>>>>>> 73574e91897b7e2e7262c782fdfa8d2e0a68000c
 $HTTP_RAW_POST_DATA = isset($HTTP_RAW_POST_DATA) ? $HTTP_RAW_POST_DATA : ''; $server->service($HTTP_RAW_POST_DATA);
 ?>

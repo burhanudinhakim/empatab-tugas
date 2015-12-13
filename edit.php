@@ -1,11 +1,21 @@
 <?php
+<<<<<<< HEAD
+=======
+error_reporting(E_ALL);
+ini_set('display_error',1);
+
+>>>>>>> 73574e91897b7e2e7262c782fdfa8d2e0a68000c
 if ($_POST) {
 	require_once 'pegawai.php';
 	$pegawai = new Pegawai;
 
 	$data = $_POST['pegawai'];
 
+<<<<<<< HEAD
 	$res = $pegawai->update_pegawai($data);
+=======
+	$res = $pegawai->update($data);
+>>>>>>> 73574e91897b7e2e7262c782fdfa8d2e0a68000c
 
 	if ($res) {
 		header('Location: index.php?update=success');
@@ -15,11 +25,16 @@ if ($_POST) {
 }
 
 require_once('nusoap/lib/nusoap.php');
+<<<<<<< HEAD
 $url = 'http://localhost/empatab/server.php?wsdl';
+=======
+$url = 'http://localhost/8/server.php?wsdl';
+>>>>>>> 73574e91897b7e2e7262c782fdfa8d2e0a68000c
 $client = new nusoap_client($url, 'WSDL');
 $nip =  isset($_GET["nip"]) ? $_GET["nip"] : '' ;
 
 $result = $client->call('get_pegawai', array('nip'=>$nip));
+<<<<<<< HEAD
 //var_dump($result);
 
 $data = json_decode($result);
@@ -85,3 +100,42 @@ $data = json_decode($result);
 </div>
 </div>
 </section>
+=======
+var_dump($result);
+
+$data = json_decode($result);
+?>
+<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+<table align="center" cellpadding="4" cellspacing="0">
+  <?php foreach ($data as $key => $value) { ?>
+  <tr>
+    <td>NIP</td>
+    <td>
+      <input type="text" disabled value="<?php echo $value->nip?>">
+      <input type="hidden" name="nip" value="<?php echo $value->nip?>">
+    </td>
+  </tr>
+  <tr>
+    <td>Nama</td>
+    <td><input type="text" name="pegawai[nama]" value="<?php echo $value->nama?>"></td>
+  </tr>
+  <tr>
+    <td>Alamat</td>
+    <td><textarea name="pegawai[alamat]"><?php echo $value->alamat?></textarea></td>
+  </tr>
+  <tr>
+    <td>Agama</td>
+    <td>
+      <input type="radio" name="pegawai[kelamin]" value="0" id="perempuan" <?php if($value->kelamin == 0) echo 'checked' ?>>
+      <label for="perempuan">Perempuan</label>&nbsp;&nbsp;&nbsp;
+      <input type="radio" name="pegawai[kelamin" value="1" id="laki"  <?php if($value->kelamin == 1) echo 'checked' ?>>
+      <label for="laki">Laki-Laki</label>
+    </td>
+  </tr>
+  <?php } ?>
+  <tr>
+  	<td colspan="2"><input type="submit" name="update" value="Update" style="float:right"></td>
+  </tr>
+</table>
+</form>
+>>>>>>> 73574e91897b7e2e7262c782fdfa8d2e0a68000c

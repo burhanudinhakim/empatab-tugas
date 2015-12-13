@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 ini_set('display_error',0);
+=======
+
+>>>>>>> 73574e91897b7e2e7262c782fdfa8d2e0a68000c
 /*
 $Id: nusoap.php,v 1.123 2010/04/26 20:15:08 snichol Exp $
 
